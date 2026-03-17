@@ -3,6 +3,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>YuensWork</Name>
     <RootNamespace>YuensWork</RootNamespace>
+    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
+    <WebBrowserPort>8000</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +32,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BookReviewApp\admin.py" />
+    <Compile Include="BookReviewApp\apps.py" />
+    <Compile Include="BookReviewApp\migrations\__init__.py" />
+    <Compile Include="BookReviewApp\models.py" />
+    <Compile Include="BookReviewApp\tests.py" />
+    <Compile Include="BookReviewApp\views.py" />
+    <Compile Include="BookReviewApp\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="YuensWork\__init__.py" />
     <Compile Include="YuensWork\settings.py" />
@@ -36,10 +46,42 @@
     <Compile Include="YuensWork\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env" />
+    <Content Include="BookReviewApp\static\css\Styles.css" />
+    <Content Include="BookReviewApp\templates\BookReviewApp\index.html" />
+    <Content Include="BookReviewApp\templates\BookReviewApp\layout.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BookReviewApp\" />
+    <Folder Include="BookReviewApp\migrations\" />
+    <Folder Include="BookReviewApp\static\" />
+    <Folder Include="BookReviewApp\static\css\" />
+    <Folder Include="BookReviewApp\static\image\" />
+    <Folder Include="BookReviewApp\static\js\" />
+    <Folder Include="BookReviewApp\templates\" />
+    <Folder Include="BookReviewApp\templates\BookReviewApp\" />
     <Folder Include="YuensWork\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.9</Version>
+      <Description>env (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="venv\">
+      <Id>venv</Id>
+      <Version>3.9</Version>
+      <Description>venv (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

@@ -1,0 +1,26 @@
+https://stackoverflow.com/questions/12278753/clean-method-in-model-and-field-validation
+
+class TrialForm(ModelForm):
+
+    class Meta:
+        model = Trial
+
+    def clean(self):
+        data = self.cleaned_data
+        if not ('movement_start' in data.keys() and 'trial_start' in data.keys()  and 'trial_stop' in data.keys()):
+            raise forms.ValidationError("Please fill out missing fields.")
+
+        trial_start = data['trial_start']
+        movement_start = data['movement_start']
+        trial_stop = data['trial_stop']
+
+        if not (movement_start >= trial_start):
+            raise forms.ValidationError('movement start must be >= trial start')
+
+        if not (trial_stop >= movement_start):
+            raise forms.ValidationError('trial stop must be >= movement start')
+
+        if not (trial_stop > trial_start):
+            raise forms.ValidationError('trial stop must be > trial start')
+
+        return data

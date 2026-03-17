@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS50BookReview</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/book.js'%}"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container=fluid">
+        <div class="row col-sm-6 offset-md-3">
+            {% if messages %}
+                {% for message in messages %}
+                    <span class="alert {{ message.tags }}" role="alert">
+                        {{ message }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row col-sm-12 text-center">
+            <h1>CS50 Book Review</h1>
+            <h6>CS50’s Web Programming with Python and JavaScript - Project 1</h6>
+        </div>
+        <div class="row col-sm-6 offset-md-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="{% url 'index' %}" class="nav-link home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logon' %}" class="nav-link logon">Logon</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="nav-link register">Register</a>
+                </li>
+                {% if request.session.userid %}
+                <li class="nav-item">
+                    <a href="{% url 'search' %}" class="nav-link search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link logout">Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <img src="{%static 'image/bookImage.jpg'%}" alt="book image" class="img-responsive">
+            </div>
+            <div class="col-xs-6">
+                <h2>{% block page %}{% endblock %}</h2>
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-xs-3">
+                <img src="{%static 'image/bookImage.jpg'%}" alt="book image" class="pull-right img-responsive">
+            </div>
+        </div>
+        <div class="row col-md-12 text-center fixed-bottom">
+            <h6>Copyright &copy; CS50 Book Review</h6>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "BookReviewApp/layout.html" %}
+{% block page %}Book(s){% endblock %}
+{% block content %}
+{% csrf_token %}
+<ul>
+    {% for book in books %}
+    <li>
+        <a href="{% url 'book' id=book.id %}"> ISBN: {{ book.isbn }} TITLE: {{ book.title }} </a>
+    </li>
+    {% empty %}
+    <li>No books found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
