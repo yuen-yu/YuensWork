@@ -1,0 +1,56 @@
+body {
+	font-family: Verdana, sans-serif;
+}
+
+.error {
+	color: red;
+}
+
+h1, h6 {
+	color: blue;
+}
+
+h2 {
+	color: lightgray;
+}
+
+h4 {
+	color: lightgray;
+}
+
+p {
+	font-size: 14px;
+	padding-left: 0px;
+	color: gray;
+}
+
+#revHeader {
+	display: inline-block;
+	margin-right: 200px;
+}
+
+#revButton {
+	display: inline-block;
+}
+
+#comment {
+	display: block;
+	margin-top: 20px;
+}
+
+#last {
+	margin-top: 20px;
+}
+
+#grade {
+	display: inline-block;
+	margin-right: 200px;
+}
+
+#subButton {
+	display: inline-block;
+}
+
+.success {
+	color: blue;
+}

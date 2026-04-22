@@ -1,0 +1,39 @@
+{% extends "BookReviewApp/layout.html" %}
+{% block page %}Book Information{% endblock %}
+{% block content %}
+{% csrf_token %}
+<h4>Details</h4>
+<ul id="details">
+    <li>ISBN: {{ book.isbn }}</li>
+    <li>Title: {{ book.title }}</li>
+    <li>Author: {{ book.author }} </li>
+    <li>Year: {{ book.year }} </li>
+    <li>Rating Count: {{ count }} </li>
+    <li>Rating: {{ rating }} </li>
+</ul>
+<h4>Reviews</h4>
+<ul>
+    {% for review in reviews %}
+        <li>{{ review }}</li>
+    {% empty %}
+        <p>No review.</p>
+    {% endfor %}
+</ul>
+
+<div>
+    <div id="revButton">
+        {% if btnRequired %}
+            <button onclick="setUp()">Add Review</button>
+        {% endif %}
+    </div>
+
+    <form id="aForm" action=/addReview method="post">
+        {% csrf_token %}
+        <div id="comment"></div>
+        <div id="last">
+            <div id="grade"></div>
+            <div id="subButton"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}

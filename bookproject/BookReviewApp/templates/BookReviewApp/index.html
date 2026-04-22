@@ -1,0 +1,15 @@
+{% extends "BookReviewApp/layout.html" %}
+{% block page %}Home{% endblock %}
+{% block content %}
+<div>
+	<p>Welcome to CS50 Book Review.</p>
+	<p>
+		Please login before searching book(s) on either ISBN, title, author or any of these combinations.
+		You may also provide your own review and rating for particular books.
+	</p>
+	<p>
+		This website would access work_ratings_count and average_rating from the Google Books.
+		Books' information on this site can also be obtained with its ISBN (eg. /api/(isbn)).
+	</p>
+</div>
+{% endblock %}

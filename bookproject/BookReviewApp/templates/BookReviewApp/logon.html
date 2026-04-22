@@ -1,0 +1,18 @@
+{% extends "BookReviewApp/layout.html" %}
+{% block page %}Login{% endblock %}
+{% block content %}
+<div>
+    <form action="/logon" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="email" placeholder="Email" /></p>
+        <p><input type="password" name="password" placeholder="Password" /></p>
+        <p>
+            <input type="submit" name="ButtonLogon" value="Login" />
+            <input type="submit" name="ButtonRegister" value="New User" />
+        </p>
+    </form>
+    <!--
+    <a href="newUser">New User</a>
+    -->
+</div>
+{% endblock %}
